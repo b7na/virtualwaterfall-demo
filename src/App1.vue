@@ -1,7 +1,12 @@
 <template>
   <div class="app">
     <div class="container" ref="fContainerRef">
-      <FsVirtualWaterfall :request="getData" :gap="15" :page-size="20" :column="column">
+      <FsVirtualWaterfall
+        :request="getData"
+        :gap="15"
+        :page-size="20"
+        :column="column"
+      >
         <template #item="{ item }">
           <div
             class="test-item"
@@ -49,7 +54,9 @@ onUnmounted(() => {
 const getData = (page: number, pageSize: number) => {
   return new Promise<ICardItem[]>((resolve) => {
     setTimeout(() => {
-      resolve(list.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize));
+      resolve(
+        list.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize)
+      );
     }, 1000);
   });
 };
@@ -65,7 +72,7 @@ const getData = (page: number, pageSize: number) => {
   .container {
     width: 90vw;
     height: 90vh;
-    border: 1px solid red;
+    border: 1px solid pink;
   }
 
   .test-item {

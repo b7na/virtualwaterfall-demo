@@ -68,7 +68,7 @@ const getData = (page: number, pageSize: number) => {
   .container {
     width: 1400px;
     height: 600px;
-    border: 1px solid red;
+    border: 1px solid pink;
   }
 }
 </style>
