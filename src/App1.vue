@@ -1,66 +1,56 @@
 <template>
   <div class="app">
-    <div class="container" ref="fContainerRef">
-      <FsVirtualWaterfall
-        :request="getData"
-        :gap="15"
-        :page-size="20"
-        :column="column"
-      >
-        <template #item="{ item }">
-          <div
-            class="test-item"
-            :style="{
-              background: item.bgColor,
-            }"
-          ></div>
-        </template>
-      </FsVirtualWaterfall>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
-import FsVirtualWaterfall from "./components/FsVirtualWaterfall.vue";
-import { ICardItem } from "./components/type";
-import list from "./config/index";
-const fContainerRef = ref<HTMLDivElement | null>(null);
-const column = ref(6);
-const fContainerObserver = new ResizeObserver((entries) => {
-  changeColumn(entries[0].target.clientWidth);
-});
+// import { ref, onMounted, onUnmounted } from "vue";
+// import FsVirtualWaterfall from "./components/FsVirtualWaterfall.vue";
+// import { ICardItem } from "./components/type";
+// import list from "./config/index";
+// const fContainerRef = ref<HTMLDivElement | null>(null);
+// const column = ref(6);
+// const fContainerObserver = new ResizeObserver((entries) => {
+//   changeColumn(entries[0].target.clientWidth);
+// });
 
-const changeColumn = (width: number) => {
-  if (width > 960) {
-    column.value = 5;
-  } else if (width >= 690 && width < 960) {
-    column.value = 4;
-  } else if (width >= 500 && width < 690) {
-    column.value = 3;
-  } else {
-    column.value = 2;
-  }
-};
+// const changeColumn = (width: number) => {
+//   if (width > 960) {
+//     column.value = 5;
+//   } else if (width >= 690 && width < 960) {
+//     column.value = 4;
+//   } else if (width >= 500 && width < 690) {
+//     column.value = 3;
+//   } else {
+//     column.value = 2;
+//   }
+// };
 
-onMounted(() => {
-  fContainerRef.value && fContainerObserver.observe(fContainerRef.value);
-});
+// onMounted(() => {
+//   fContainerRef.value && fContainerObserver.observe(fContainerRef.value);
+// });
 
-onUnmounted(() => {
-  fContainerRef.value && fContainerObserver.unobserve(fContainerRef.value);
-});
+// onUnmounted(() => {
+//   fContainerRef.value && fContainerObserver.unobserve(fContainerRef.value);
+// });
 
-const getData = (page: number, pageSize: number) => {
-  return new Promise<ICardItem[]>((resolve) => {
-    setTimeout(() => {
-      resolve(
-        list.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize)
-      );
-    }, 1000);
-  });
-};
-</script>
+// const goNewPage=()=>{
+//   // this.$router.push({
+// alert("123ß")
+//   // })
+// };
+
+// const getData = (page: number, pageSize: number) => {
+//   return new Promise<ICardItem[]>((resolve) => {
+//     setTimeout(() => {
+//       resolve(
+//         list.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize)
+//       );
+//     }, 1000);
+//   });
+// };
+</script> 
 
 <style scoped lang="scss">
 .app {
