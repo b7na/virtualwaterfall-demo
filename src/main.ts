@@ -1,9 +1,15 @@
 import { createApp } from "vue";
+import { createPinia   } from "pinia";
 import "./style.css";
-import App1 from './App1.vue'
-import App2 from "./App2.vue";
-import App3 from "./App3.vue";
+import App from './App.vue'
 
-createApp(App3).mount("#app");
-createApp(App1).mount("#app");
-createApp(App2).mount("#app");
+import ElementPlus from 'element-plus'
+import router from './router/index.ts'
+import 'element-plus/dist/index.css'
+const app=createApp(App)
+const pinia=createPinia()
+app.use(ElementPlus);
+app.use(pinia);
+app.use(router);
+
+app.mount("#app");
