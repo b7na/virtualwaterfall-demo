@@ -1,5 +1,4 @@
 import axios from "axios";
-import useStore from "element-plus/es/components/table/src/store";
 
 const fetchRequest = async (
   url: string,
